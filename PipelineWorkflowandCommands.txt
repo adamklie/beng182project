@@ -1,0 +1,77 @@
+﻿Pipeline Workflow and Commands
+Getting our proteins
+Chose proteins 450-550 (Total of 101) from uniprot-all.fasta.gz
+wget https://www.dropbox.com/s/fb0zgdbj45t6ov3/UP000006737.fasta        #get the file
+gunzip uniprot-all.fasta.gz        #unzip
+
+
+SEE readFasta.py for details on protein extraction
+
+
+Note: all proteins need to be in fastaSeq.fasta and are output to trimmedFasta.fasta
+
+
+BLASTing proteins against database
+*pretty sure you can both brew and sudo apt-get install blast
+
+
+wget https://www.dropbox.com/s/908l9r9qqq0y9st/uniprot-all.fasta.gz        #swissprot database from website
+makeblastdb -in <database protein sequences> -dbtype prot        #make blastdb
+blastp -query <protein sequences> -db <database fasta> > <outfile>        #use blast
+
+
+*adding -outfmt 5 <outfile> forces the creation of xml output
+*other outputs can be specified with different numbers (https://www.ncbi.nlm.nih.gov/books/NBK279675/) <- Helps with command line operation
+*other possible databases from BLAST are located at: ftp://ftp.ncbi.nlm.nih.gov/blast/db/
+*also need to keep the raw output files
+
+
+Parsing BLAST output
+All the commands and instructions can be found here for biopython (starting at section 7.3) http://biopython.org/DIST/docs/tutorial/Tutorial.html#htoc87
+
+
+from Bio.Blast import NCBIXML
+result_handle = open("my_blast.xml")
+blast_records = NCBIXML.parse(result_handle)
+for blast_record in blast_records:
+        #basically here for every record we need to get the keywords out, not exactly sure how 
+  to do this yet
+
+
+
+
+Note: the tutorial recommends you parse the xml output instead of the plain text so the commands I put here are for parsing xml output
+
+
+HMMScan against the Pfam database
+*theoretically you should be able to use phhmer against the pfam fasta database and use hmmscan against the pfam hmm database, the former option was painstakingly slow on my machine so I included both here. I think the hmmscan option is the better one anyway. Here is a good user guide to the entire HMMER tool: http://eddylab.org/software/hmmer3/3.1b2/Userguide.pdf
+*list of pfam databases at: ftp://ftp.ebi.ac.uk/pub/databases/Pfam/releases/Pfam31.0/
+*pretty sure hmmer is brewable but I know it is sudo apt-get installable
+
+
+wget ftp://ftp.ebi.ac.uk/pub/databases/Pfam/releases/Pfam31.0/Pfam-A.fasta.gz        #get the pfam database
+gunzip Pfam-A.fasta.gz
+phmmer --tblout out.txt <protein sequences> <database fasta>        #run through pfam sequences
+*the --tblout flag indicates to write the output in a tabular form
+
+
+wget ftp://ftp.ebi.ac.uk/pub/databases/Pfam/releases/Pfam31.0/Pfam-A.hmm.gz        #get pfam database
+gunzip Pfam-A.hmm.gz
+hmmpress <database hmm>
+hmmscan --tblout out.txt <database hmm> <protein sequences>        #run it through the hmm
+
+
+*really it makes sense that hmm is faster, my guess is phmmer performs a simple search whereas hmmscan uses a profile hmm
+
+
+Parsing hmmscan output
+*Biopython may also come in handy here, haven’t looked at it in too much detail yet but there seems to be a package that can parse the hmmscan out (http://biopython.org/DIST/docs/api/Bio.SearchIO.HmmerIO-module.html)
+
+
+Searching Prosite for hits
+*apparently prosite has a downloadable tool called pftools, haven’t done that much research on it but documentation is located here: http://web.expasy.org/pftools/
+*not sure how to download yet, may have to do it manually
+*pfscan seems like the best functionality bet
+
+
+WORK NEEDS TO BE DONE TO UNDERSTAND HOW TO RUN OUR SEQUENCES IN GO AND KEGG, MAY NEED MYSQL TO DO SO, I’LL FOLLOW UP WITH PATRICK TOMORROW
