@@ -1,6 +1,13 @@
+import blastSeqs
+import pfamSeqs
+import prositeSeqs
 from blastParse import parseBlast
 from pfamParse import parsePfam
 from prositeParse import parseProsite
+
+blastSeqs
+pfamSeqs
+prositeSeqs
 blastHits = parseBlast()
 pfamHits = parsePfam()
 prositeHits = parseProsite()

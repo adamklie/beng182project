@@ -9,9 +9,10 @@ import os
 #hundred and one dalmati- I mean - protein sequences
 t_Prot = 'trimmedProteins.fasta'
 
-database = 'prosite.dat'
+database = 'databases/prosite.dat'
 
-outfile = 'prositeOut.txt'
+outfile = './output/prositeOut.txt'
+
 
 #scan the database with the protein sequences
 print 'Scanning prosite database with protein sequences\n\n'

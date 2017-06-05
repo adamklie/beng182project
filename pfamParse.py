@@ -13,7 +13,7 @@ from Bio import SearchIO
 def parsePfam():
 
 	output = {}
-	for qresult in SearchIO.parse('./output/hmmscan_out.txt', 'hmmer3-tab'):
+	for qresult in SearchIO.parse('./output/pfamOut.txt', 'hmmer3-tab'):
 		keywords = []
 		queryID = qresult.id.split(':')[1]
 		for item in qresult.hits:
