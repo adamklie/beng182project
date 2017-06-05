@@ -1,3 +1,9 @@
+########################################################
+# To Run this program you MUST have the following files:
+# 'fastaSeq.fasta' - Original, large fasta file
+# 
+# Protein sequences output to 'trimmedProteins.fasta'
+########################################################
 import os
 numCarrots = 0 
 readFile = open('fastaSeq.fasta', 'r')
@@ -11,4 +17,3 @@ for line in readFile:
 			break 
 	elif numCarrots >=  450 and numCarrots <= 454:
 		outputFile.write(line)
-

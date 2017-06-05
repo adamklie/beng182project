@@ -3,6 +3,7 @@ output/
 Pfam-A.hmm
 uniprot-all.fasta
 prosite.dat
+databases/
 
 # This thing
 .DS_Store
