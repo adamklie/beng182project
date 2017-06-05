@@ -1,15 +1,28 @@
+########################################################
+# To Run this program you MUST have the following files:
+# 'blastOut.xml' - Blast output in parsing format
+# Parses blast output and returns dictionary of protein
+# IDs as keys and keywords as values
+# The first keyword is the main title of the best hit
+# from blast (E-VALUE < 1) followed by @ seperated
+# keywords pulled from ncbi
+########################################################
+
 from Bio import SearchIO
-output = {}
-for qresult in SearchIO.parse('hmmscan_out.txt', 'hmmer3-tab'):
-	keywords = []
-	queryID = qresult.id.split(':')[1]
-	for item in qresult.hits:
-		if item.evalue < 1.0:
-	  		keywords.append(item.description)
-	keywordsWeWant = ""
-	for keyword in keywords:
-		keywordsWeWant += '@' + keyword
-	keywordsWeWant = keywordsWeWant[1:]
-	output[queryID] = keywordsWeWant
-	print(output)
+
+def parsePfam():
+
+	output = {}
+	for qresult in SearchIO.parse('./output/hmmscan_out.txt', 'hmmer3-tab'):
+		keywords = []
+		queryID = qresult.id.split(':')[1]
+		for item in qresult.hits:
+			if item.evalue < 1.0:
+	  			keywords.append(item.description)
+		keywordsWeWant = ""
+		for keyword in keywords:
+			keywordsWeWant += '@' + keyword
+		keywordsWeWant = keywordsWeWant[1:]
+		output[queryID] = keywordsWeWant
+	return output
 
