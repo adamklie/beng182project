@@ -33,4 +33,5 @@ def parsePrositeGO(filename):
             p2go.setdefault(p_num, []).append(go_final)
 
     prosite2go.close()
+    #print(p2go)
     return p2go
