@@ -15,6 +15,6 @@ outfile = './output/prositeOut.txt'
 
 
 #scan the database with the protein sequences
-print 'Scanning prosite database with protein sequences\n\n'
+print 'Scanning prosite database with protein sequences\n'
 scan = './ps_scan.pl -s -d ' + database + ' ' +  t_Prot + ' > ' + outfile
 os.system(scan)
