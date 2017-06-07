@@ -1,8 +1,5 @@
 # output files
 output/
-Pfam-A.hmm
-uniprot-all.fasta
-prosite.dad
 databases/
 go/
 

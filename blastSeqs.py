@@ -7,7 +7,7 @@
 import os
 
 #Original fasta protein sequence
-originalFasta = 'fastaSeq.fasta'
+#originalFasta = 'fastaSeq.fasta'
 
 #Get the trimmed protein sequences
 protSeq = 'trimmedProteins.fasta'
@@ -16,7 +16,6 @@ protSeq = 'trimmedProteins.fasta'
 #os.system('brew install blast')
 
 #Blasting swissprot/uniprot db against the trimmed protein sequence through swissprot db
-print ''
 print 'Preparing Blast Database\n'
 uniprotDb = './databases/uniprot-all.fasta' 
 #preps the blast search by making a blast db
