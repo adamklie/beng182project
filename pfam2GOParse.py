@@ -1,5 +1,8 @@
-#grabs data from the file "pfam2go" and creates a dictionary for all the
-#pfam numbers with their corresponding GO indentifiers
+#########################################################################
+# grabs data from the file "pfam2go" and creates a dictionary for all the
+# pfam numbers with their corresponding GO indentifiers
+#########################################################################
+
 def parsePfamGO (filename):
     p2go = {}
     pfam2go = open(filename, 'r')
@@ -24,7 +27,6 @@ def parsePfamGO (filename):
                     go_term += temp.strip() + ' '
 
             go_final = go_term + '[' + go_num + ']'
-            #print(go_final)
 
             p2go.setdefault(p_num, []).append(go_final)
     pfam2go.close()

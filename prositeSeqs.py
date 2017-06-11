@@ -4,6 +4,7 @@
 # 'prosite.dat' - Prosite regular expression database file
 # psscan must be specified in path and ps_scan must be executable
 ########################################################
+
 import os
 
 #hundred and one dalmati- I mean - protein sequences

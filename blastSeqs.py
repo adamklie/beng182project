@@ -1,26 +1,19 @@
 ########################################################
 # To Run this program you MUST have the following files:
-# 'fastaSeq.fasta' - Original, large fasta file
-# 'readFasta.py' - Trims out 101 protein sequences
 # 'uniprot-all.fasta' - Uniprot Database File
 ########################################################
-import os
 
-#Original fasta protein sequence
-#originalFasta = 'fastaSeq.fasta'
+import os
 
 #Get the trimmed protein sequences
 protSeq = 'trimmedProteins.fasta'
-
-#installs Blast, assumed to be installed
-#os.system('brew install blast')
 
 #Blasting swissprot/uniprot db against the trimmed protein sequence through swissprot db
 print 'Preparing Blast Database\n'
 uniprotDb = './databases/uniprot-all.fasta' 
 #preps the blast search by making a blast db
 makeBlast  = 'makeblastdb -in ' +  uniprotDb + ' -dbtype prot'
-#os.system(makeBlast)
+#os.system(makeBlast)	#uncomment if you do not already have database prepped
 
 #Querys the blast db to pull out hits, stored in blastOut
 print 'Running Blast Queries\n'

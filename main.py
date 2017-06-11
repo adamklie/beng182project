@@ -61,11 +61,11 @@ for ids in gene_ids:
 	if len(GO_IDs) == 0:
 		GO_IDs = 'NULL'
 	
-	# Make sure there are blast hits
+	# Make sure there are hits
 	if blastHits.get(ids) != None:
 		blast_text = blastHits[ids]
         else:
-		blast_text = ''
+		blast_text = 'NULL'
 
 	if pfamHits.get(ids) != None:
 		pfam_text = pfamHits[ids]
@@ -92,6 +92,7 @@ for ids in gene_ids:
 			
 	row = ids + '\t' + blast_text + '\t' + pfam_text + '\t' + prosite_text + '\t' + kegg_text + '\t' + GO_IDs + '\t' + comments + '\n'
 	output.write(row)
-	
+
+output.close()
 	
 

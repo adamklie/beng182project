@@ -1,11 +1,5 @@
 ########################################################
-# To Run this program you MUST have the following files:
-# 'blastOut.xml' - Blast output in parsing format
-# Parses blast output and returns dictionary of protein
-# IDs as keys and keywords as values
-# The first keyword is the main title of the best hit
-# from blast (E-VALUE < 1) followed by @ seperated
-# keywords pulled from ncbi
+# Function to parse hmmscan tabular output for keywords
 ########################################################
 
 from Bio import SearchIO

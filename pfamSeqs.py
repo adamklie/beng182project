@@ -3,6 +3,7 @@
 # 'trimmedProteins.fasta' - Trimmed fasta file
 # 'Pfam-A.hmm' - PFAM Database (HMM) File
 ########################################################
+
 import os
 
 #hundred and one dalmati- I mean - protein sequences
@@ -13,7 +14,7 @@ data_Hmm = './databases/Pfam-A.hmm'
 #hmmpress the database
 print 'Pressing the HMM database\n'
 press = 'hmmpress ' + data_Hmm
-#os.system(press)
+#os.system(press)	#uncomment if you do not already have hmm pressed
 
 #scan the database with the protein sequences
 print 'Scanning HMM database with protein sequences\n'

@@ -35,8 +35,6 @@ def parseBlast():
 					keyword_list.append(protein_title)
 					accession = splittitle[1].split('|')[1] #parse for the accession number
 					accessions.setdefault(queryID, []).append(accession)	
-					#print(queryID,":")
-					#print(accession)
 					handle = ExPASy.get_sprot_raw(accession)
 					record = SwissProt.read(handle)	
 					keyword_list += record.keywords

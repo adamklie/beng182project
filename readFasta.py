@@ -1,9 +1,9 @@
 ########################################################
 # To Run this program you MUST have the following files:
-# 'fastaSeq.fasta' - Original, large fasta file
-# 
+# 'fastaSeq.fasta' - Original, large fasta file 
 # Protein sequences output to 'trimmedProteins.fasta'
 ########################################################
+
 import os
 import re
 
@@ -15,7 +15,7 @@ def trimProteins():
 	for line in readFile:
 		if line[0] == '>':
 			numCarrots += 1
-			if numCarrots >= 450 and numCarrots <= 549:
+			if numCarrots >= 450 and numCarrots <= 454:
 				outputFile.write(line)
 				splitline = line.split()
 				GNs = re.findall('GN=........', line)
@@ -23,9 +23,8 @@ def trimProteins():
 				splitline2 = splitline[0].split(':')
 				queryID = splitline2[1]
 				gene_ids[queryID] = GN
-			elif numCarrots > 549:
+			elif numCarrots > 454:
 				break 
-		elif numCarrots >= 450 and numCarrots <= 549:
+		elif numCarrots >= 450 and numCarrots <= 454:
 			outputFile.write(line)
 	return gene_ids
-#print(trimProteins())

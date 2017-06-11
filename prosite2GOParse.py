@@ -1,9 +1,11 @@
-#grabs data from the file "prosite2go" and creates a dictionary for all the
-#prosite numbers with their corresponding GO indentifiers
+############################################################################
+# grabs data from the file "prosite2go" and creates a dictionary for all the
+# prosite numbers with their corresponding GO indentifiers
+############################################################################
+
 def parsePrositeGO(filename):
     p2go = {}
     prosite2go = open(filename, 'r')
-
 
     for line in prosite2go:
         if line[0:7] == 'PROSITE':  #change this later
@@ -28,10 +30,8 @@ def parsePrositeGO(filename):
                     go_term += temp.strip() + ' '
 
             go_final = go_term + '[' + go_num + ']'
-            #print(go_final)
 
             p2go.setdefault(p_num, []).append(go_final)
 
     prosite2go.close()
-    #print(p2go)
     return p2go
