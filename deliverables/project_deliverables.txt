@@ -1,0 +1,4 @@
+Triple A Project 1 Paper.pdf -- Written Report
+Supplementary Accession Numbers.pdf -- Some supplementary data corresponding to interesting keywords searches
+all_1050_seqs.tsv -- Total sequences annotated, only about 100 commented by hand
+450_549_seqs.tsv -- First 100 sequences done with carefully annotated comments column
